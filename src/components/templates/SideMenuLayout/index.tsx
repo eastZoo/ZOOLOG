@@ -7,7 +7,7 @@ interface MainProps {
   children?: React.ReactElement;
 }
 
-export const SideMenuTemplate = ({ children }: MainProps) => {
+export const SideMenuLayout = ({ children }: MainProps) => {
   return (
     <S.SideMenuTemplate>
       <HeaderNav />

@@ -1,9 +1,9 @@
-import { SideMenuTemplate } from "@/components/templates/SideMenuTemplate";
+import { SideMenuLayout } from "@/components/templates/SideMenuLayout";
 
 export default function Home() {
   return (
-    <SideMenuTemplate>
+    <SideMenuLayout>
       <div>Hello!!</div>
-    </SideMenuTemplate>
+    </SideMenuLayout>
   );
 }
