@@ -1,55 +1,56 @@
 import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {
-  shadows: {
-    main: "0 2px 10px -5px rgba(0,0,0,0.2)",
-    primary: "0 2px 6px -3px rgba(0,0,0,0.1)",
-    formTemplate: "0 -2px 10px -4px rgba(0,0,0,0.25)",
-    navigation: "0 2px 10px 0 rgba(0,0,0,0.07)",
-    btn: "0 2px 10px -5px rgba(0,0,0,0.15)",
+  shadow: {
+    dark: "0 0 14px 2px rgba(0, 0, 0, 0.4)",
+    admin: "0 4px 10px -4px rgba(0,0,0,.1)",
+    adminHeader: "0 2px 6px -4px rgba(0,0,0,.1)",
+  },
+  gradient: {
+    primary:
+      "linear-gradient(108.17deg, #4453FF 52.05%, #0028B4 163.25%, #4462FF 200.35%)",
+    dark: "linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, rgba(0,0,0, 0.9) 100%)",
   },
   colors: {
-    //메인컬러
-    primary: "#E7525B",
-    primaryHover: "#D73E47",
-    gray: "#F3F3F3",
-    btnprimary: "#E7525B0F",
+    primary: "#4462FF",
+    primaryHover: "#3451E7",
+    secondary: "#344AB9",
+    secondaryHover: "#263BAA",
+    dark: "#171717",
+    darkHover: "#0C0C0C",
+    func: "#646464",
+    funcHover: "#585858",
+    search: "#2E2E2E",
+    searchHover: "#171717",
 
-    //아이콘
-    iconDefault: "#727272",
+    mainBg: "#212121",
+    searchBarBg: "#545454",
+    kakaoBg: "#F7E600",
+    kakaoBgHover: "#EBDB00",
+    vipBg: "#4637DE",
+    vipBgHover: "#3728CB",
 
-    //Border
-    borderDefault: "#F3F3F3",
+    disabledBtn: "#dddddd",
 
-    //Background
-    shadeDefault: "#FCFCFC",
+    inputDarkBg: "#424242",
+    inputDarkBorder: "#4563FF",
 
-    //Chart
-    chartBorder: "#DADADA",
-    chartBorderInner: "#F3F3F3",
-    chartLabel: "#737373",
-    chartBar01: "#FFA99F",
-    chartBar02: "#FFDC9F",
-    chartBar03: "#9FA4FF",
+    subTxt: "#C0C0C0",
+    kakaoTxt: "#181600",
+    categorySubTxt: "#BABABA",
 
-    //기본음영
-    white: "#fff",
-    whiteShade: "#F9F9F9",
-    black: "#000",
-    shadowBlack: "#000000a6",
-  },
-  text_colors: {
-    //텍스트
-    black: "#000",
-    gray: "#838383",
-    dark: "#404040",
-    red: "#E7525B",
-    money_red: "#FB5A49",
-    money_blue: "#9FA4FF",
-  },
-  radius_colors: {
-    dark: "#404040",
-    red: "#FB5A49",
-    blue: "#9FA4FF",
+    adminBg: "#FBFBFC",
+    adminMainTxt: "#484848",
+    adminLabelTxt: "#6A6A6A",
+    adminPlaceholder: "#C7C7C7",
+    adminBorder: "#F6F7FA",
+    adminDivider: "#E4E4E4",
+    adminInputBorder: "#DFDFDF",
+    adminInputBg: "#F8F8F8",
+
+    black: "#000000",
+    white: "#ffffff",
+    red: "#ff5f5f",
+    whiteHover: "#F6F7FA",
   },
 };

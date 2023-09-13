@@ -2,49 +2,47 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    shadows: {
-      main: string;
-      primary: string;
-      formTemplate: string;
-      navigation: string;
-      btn: string;
-    };
+    shadow: { dark: string; admin: string; adminHeader: string };
+    gradient: { primary: string; dark: string };
     colors: {
-      primary: string;
-      primaryHover: string;
-      gray: string;
-      btnprimary: string;
+      [primary: string]: string;
+      [primaryHover: string]: string;
+      [secondary: string]: string;
+      [secondaryHover: string]: string;
+      [func: string]: string;
+      [funcHover: string]: string;
+      dark: string;
+      darkHover: string;
+      search: string;
+      searchHover: string;
 
-      iconDefault: string;
+      mainBg: string;
+      kakaoBg: string;
+      kakaoBgHover: string;
+      vipBg: string;
+      vipBgHover: string;
 
-      borderDefault: string;
+      disabledBtn: string;
 
-      shadeDefault: string;
+      inputDarkBg: string;
+      inputDarkBorder: string;
 
-      chartBorder: string;
-      chartBorderInner: string;
-      chartLabel: string;
-      chartBar01: string;
-      chartBar02: string;
-      chartBar03: string;
+      subTxt: string;
+      kakaoTxt: string;
+      categorySubTxt: string;
 
+      adminBg: string;
+      adminMainTxt: string;
+      adminLabelTxt: string;
+      adminPlaceholder: string;
+      adminBorder: string;
+      adminDivider: string;
+      adminInputBorder: string;
+      adminInputBg: string;
+
+      black: string;
       white: string;
-      whiteShade: string;
-      black: string;
-      shadowBlack: string;
-    };
-    text_colors: {
-      black: string;
-      gray: string;
-      dark: string;
-      red: string;
-      money_red: string;
-      money_blue: string;
-    };
-    radius_colors: {
-      dark: string;
-      red: string;
-      blue: string;
+      whiteHover: string;
     };
   }
 }

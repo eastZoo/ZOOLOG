@@ -9,6 +9,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "@/styles/theme";
 import StyledComponentsRegistry from "@/lib/registry";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { GlobalStyle } from "@/styles/globals-style";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +42,10 @@ export default function RootLayout({
         <RecoilRoot>
           <ThemeProvider theme={theme}>
             <StyledComponentsRegistry>
-              <body>{children}</body>
+              <>
+                <GlobalStyle />
+                <body>{children}</body>
+              </>
             </StyledComponentsRegistry>
           </ThemeProvider>
         </RecoilRoot>
