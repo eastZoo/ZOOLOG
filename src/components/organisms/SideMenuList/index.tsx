@@ -1,15 +1,20 @@
 import React from "react";
 import * as S from "./sideMenuSection.style";
-import { SideNavList } from "@/components/molcules/SideNavList";
-import SideProfile from "@/components/molcules/SideProfile";
 
-const SideMenuSection = () => {
+import SideProfile from "@/components/molcules/SideProfile";
+import SideNavList from "@/components/molcules/SideNavList";
+
+export default function SideMenuSection({
+  toggleMenu,
+  isOpen,
+  openHandler,
+}: any) {
   return (
-    <S.SideMenuSection>
+    <S.SideMenuSection className={`${isOpen ? "on" : "off"}`}>
       <SideProfile />
-      <SideNavList />
+      <S.SideNavList>
+        <SideNavList openHandler={openHandler} />
+      </S.SideNavList>
     </S.SideMenuSection>
   );
-};
-
-export default SideMenuSection;
+}

@@ -1,4 +1,4 @@
-import { SideMenuLayout } from "@/components/templates/SideMenuLayout";
+import SideMenuLayout from "@/components/templates/SideMenuLayout";
 
 export default function Home() {
   return (
