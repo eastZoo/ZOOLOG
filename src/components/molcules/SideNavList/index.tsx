@@ -109,7 +109,7 @@ export default function SideNavList({ openHandler }: any) {
                 return <>&nbsp;&nbsp;&nbsp;</>;
               })}
               {/* <D02Icon className="d02-icon" /> */}
-              <span>{menu.name}</span>
+              <span>- {menu.name}</span>
             </span>
           </div>
         );

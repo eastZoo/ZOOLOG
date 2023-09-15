@@ -19,7 +19,6 @@ export const SideMenuSection = styled.section`
 export const SideNavList = styled.nav`
   overflow-y: auto;
   display: flex;
-  height: calc(100vh - 80px);
   margin-top: 20px;
   font-size: 1.4rem;
   font-weight: 400;

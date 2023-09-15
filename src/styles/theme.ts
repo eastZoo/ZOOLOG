@@ -23,6 +23,10 @@ export const theme: DefaultTheme = {
     search: "#2E2E2E",
     searchHover: "#171717",
 
+    sideBG: "#f9f9fb",
+    sideOpen: "#eff6ff",
+    side02Highlight: "#E8F1FC",
+
     mainBg: "#212121",
     searchBarBg: "#545454",
     kakaoBg: "#F7E600",

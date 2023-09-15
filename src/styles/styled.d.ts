@@ -16,6 +16,10 @@ declare module "styled-components" {
       search: string;
       searchHover: string;
 
+      sideBG: string;
+      sideOpen: string;
+      side02Highlight: string;
+
       mainBg: string;
       kakaoBg: string;
       kakaoBgHover: string;
