@@ -41,16 +41,16 @@ export default function SideNavList({ openHandler }: any) {
   }, [menuList]);
 
   function toggleMenu(id: number, isOpen: number) {
-    console.log(id, isOpen, "isopen?");
     setMenuList(
-      menuList.map((menu: Menu) => {
+      menuList.map((menu: any) => {
         if (menu.id === id) {
-          return { ...menu, isOpen: isOpen === 0 ? true : false };
+          return { ...menu, is_open: !isOpen };
         }
         return menu;
       })
     );
   }
+  console.log(menuList);
 
   // 토글 메뉴 렌더링 함수 부분
   function renderMenu(
@@ -97,7 +97,7 @@ export default function SideNavList({ openHandler }: any) {
               if (window.innerWidth <= 600) {
                 // setMenu({ id: menu.id });
                 setMenuParent(menu.parrent_id);
-                openHandler((isOpen: any) => !isOpen);
+                openHandler(!is_open);
               } else {
                 // setMenu({ id: menu.id });
                 setMenuParent(menu.parrent_id);

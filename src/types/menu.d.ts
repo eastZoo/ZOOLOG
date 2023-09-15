@@ -1,11 +1,11 @@
 export interface Menu {
+  is_open: number;
   id: number;
   level: number;
   menu_type: number;
   name: string;
   parrent_id: number;
   path: string;
-  is_open: number;
   // component: JSX.Element;
 }
 
