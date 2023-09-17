@@ -4,26 +4,28 @@ import BackImg1 from "@/styles/assets/images/back1.gif";
 import BackImg2 from "@/styles/assets/images/back2.gif";
 import BackImg3 from "@/styles/assets/images/back3.gif";
 
-export const MainTemplate = styled.section`
-  grid-area: CT;
-  display: flex;
-  flex-direction: row;
-  width: calc(100%- 150px);
-  height: 100%;
-  background-image: url(${BackImg1?.src});
-  background-color: rgba(0, 0, 0, 0.25);
-  background-blend-mode: multiply;
-  background-size: cover;
+export const MainTemplate = styled.main`
+  width: 100%;
+  margin: 0 auto;
 `;
 
-export const MainTitContainer = styled.div`
+export const MainImage = styled.div`
   position: relative;
-  display: flex;
-  top: 80%;
-  left: 25%;
+  background-image: url(${BackImg1?.src});
   width: 100%;
-  transform: translateY(-60%);
+  height: calc(100vh - 60px);
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: 1;
+`;
+
+export const MainContainer = styled.div`
+  margin-top: 0;
+  width: 100%;
+  box-sizing: inherit;
   font-size: 60px;
+  text-align: center;
+
   @media only screen and (min-width: 320px) {
     padding-left: 15px;
     padding-right: 15px;
@@ -45,7 +47,6 @@ export const MainTitContainer = styled.div`
     font-weight: 900;
     margin: 0;
     color: #fff;
-    line-height: 1;
     @media only screen and (max-width: 465px) {
       display: block;
       position: absolute;
@@ -69,6 +70,11 @@ export const MainTitContainer = styled.div`
   }
 `;
 
-export const RecentPostSection = styled.section`
-  display: block;
+export const MainTit = styled.div`
+  align-items: center;
+  height: calc(100vh - 500px);
+  border: 1px solid red;
+  justify-content: center;
+  display: flex;
+  margin: auto;
 `;

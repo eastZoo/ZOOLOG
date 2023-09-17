@@ -4,11 +4,25 @@ import * as S from "./mainTemplate.style";
 const MainTemplate = () => {
   return (
     <S.MainTemplate>
-      <S.MainTitContainer>
-        <p className="p1">WEB</p>
-        <p className="p2">DEVELOPER</p>
-      </S.MainTitContainer>
-      <S.RecentPostSection>hello</S.RecentPostSection>
+      <S.MainImage>
+        <S.MainContainer>
+          <S.MainTit>
+            <div className="p1">WEB</div>
+            <div className="p2">DEVELOPER</div>
+          </S.MainTit>
+        </S.MainContainer>
+      </S.MainImage>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
+      <div>hello!!</div>
     </S.MainTemplate>
   );
 };

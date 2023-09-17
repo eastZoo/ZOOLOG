@@ -29,13 +29,15 @@ export default function SideMenuLayout({ children }: MainProps) {
 
   return (
     <S.SideMenuTemplate>
-      <HeaderNav />
       <SideMenuSection
         toggleMenu={toggleMenu}
         isOpen={isOpen}
         openHandler={openHandler}
       />
-      <MainContentSection>{children}</MainContentSection>
+      <MainContentSection>
+        <HeaderNav />
+        {children}
+      </MainContentSection>
     </S.SideMenuTemplate>
   );
 }

@@ -13,6 +13,10 @@ body {
   letter-spacing: -0.5px;
 }
 
+aside{
+  display: block;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -37,5 +41,10 @@ ul, li {
   color: red;
   font-size: 1.1rem;
 }
+
+div {
+    display: block;
+}
+
 
 `;
