@@ -1,5 +1,5 @@
 "use client";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import BackImg1 from "@/styles/assets/images/back1.gif";
 import BackImg2 from "@/styles/assets/images/back2.gif";
 import BackImg3 from "@/styles/assets/images/back3.gif";
@@ -25,6 +25,15 @@ export const MainContainer = styled.div`
   box-sizing: inherit;
   font-size: 60px;
   text-align: center;
+`;
+
+export const MainTit = styled.div`
+  align-items: center;
+  height: calc(100vh - 500px);
+  border: 1px solid red;
+  justify-content: center;
+  display: flex;
+  margin: auto;
 
   @media only screen and (min-width: 320px) {
     padding-left: 15px;
@@ -55,26 +64,4 @@ export const MainContainer = styled.div`
       transform: translateX(-50%);
     }
   }
-
-  & .p2 {
-    display: inline-block;
-    font-size: 1em;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1;
-    color: #d35c65;
-    @media only screen and (max-width: 465px) {
-      position: relative;
-      top: 0.6em;
-    }
-  }
-`;
-
-export const MainTit = styled.div`
-  align-items: center;
-  height: calc(100vh - 500px);
-  border: 1px solid red;
-  justify-content: center;
-  display: flex;
-  margin: auto;
 `;
