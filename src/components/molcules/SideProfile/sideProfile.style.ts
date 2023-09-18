@@ -7,6 +7,7 @@ export const SideProfile = styled.div`
   justify-content: center;
   align-items: center;
   border: 1px solid red;
+  padding: 30px 0;
 `;
 
 export const SideProfileImg = styled.div`
