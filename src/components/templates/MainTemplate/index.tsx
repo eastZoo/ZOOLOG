@@ -2,9 +2,10 @@
 import React from "react";
 import * as S from "./mainTemplate.style";
 import { TypeAnimation } from "react-type-animation";
-import { BannerSection } from "../BannerSection";
-import { SkillSection } from "../SkillSection";
-import { ProjectSection } from "../ProjectSection";
+import { BannerSection } from "../../organisms/BannerSection";
+import { SkillSection } from "@/components/organisms/SkillSection";
+import { ProjectSection } from "@/components/organisms/ProjectSection";
+import { ContactSection } from "@/components/organisms/ContactSection";
 
 const MainTemplate = () => {
   return (
@@ -12,8 +13,7 @@ const MainTemplate = () => {
       <BannerSection />
       <SkillSection />
       <ProjectSection />
-      {/* <Contact /> */}
-      {/* <Footer /> */}
+      <ContactSection />
     </S.MainTemplate>
   );
 };

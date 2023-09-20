@@ -4,6 +4,7 @@ import MainContentSection from "@/components/organisms/MainContentSection";
 import HeaderNav from "@/components/organisms/HeaderNav";
 import SideMenuSection from "@/components/organisms/SideMenuList";
 import { useState } from "react";
+import { Footer } from "@/components/organisms/Footer";
 
 interface MainProps {
   children?: React.ReactElement;
@@ -37,6 +38,7 @@ export default function SideMenuLayout({ children }: MainProps) {
       <MainContentSection>
         <HeaderNav />
         {children}
+        <Footer />
       </MainContentSection>
     </S.SideMenuTemplate>
   );
