@@ -7,6 +7,8 @@ import BackImg3 from "@/styles/assets/images/back3.gif";
 export const MainTemplate = styled.main`
   width: 100%;
   margin: 0 auto;
+  color: #fff !important;
+  font-family: "Centra", sans-serif !important;
 `;
 
 export const MainImage = styled.div`

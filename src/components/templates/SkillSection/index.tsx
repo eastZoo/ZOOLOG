@@ -30,7 +30,6 @@ export const SkillSection = () => {
 
   return (
     <section className="skill" id="skills">
-      <img className="background-image-left" src={colorSharp.src} alt="Image" />
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -67,6 +66,7 @@ export const SkillSection = () => {
           </div>
         </div>
       </div>
+      <img className="background-image-left" src={colorSharp.src} alt="Image" />
     </section>
   );
 };
