@@ -6,6 +6,7 @@ interface ButtonProps {
   height?: number;
   size?: string;
   color: string;
+  layout?: string;
   rotate?: string;
 }
 export const Button = styled.button<ButtonProps>`
@@ -19,6 +20,7 @@ export const Button = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: ${(props) => (props.layout === "icon" ? "2px" : "0")};
   border: 1px solid gray;
   transition: background 0.1s ease-in-out;
   box-sizing: border-box;

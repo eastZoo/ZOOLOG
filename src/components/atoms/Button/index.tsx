@@ -8,6 +8,7 @@ interface ButtonProps {
   type: "button" | "submit" | "reset" | undefined;
   label?: string;
   onClick?: any;
+  layout?: string;
   form?: string;
   children?: any;
   disabled?: boolean;

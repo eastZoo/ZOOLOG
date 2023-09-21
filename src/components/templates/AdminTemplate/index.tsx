@@ -33,24 +33,22 @@ const AdminTemplate = () => {
       })
   );
 
-  const categoryItem = [
-    { id: 1, name: "Javascript" },
-    { id: 2, name: "TypeScript" },
-    { id: 3, name: "Python" },
-  ];
-
   return (
     <S.AdminTemplate>
       <S.PostTitWrapper>
-        <InputSelect
+        {/* <InputSelect
           layout="columns"
           size="sm"
           width="150px"
           themeType="admin"
-          options={categoryItem}
+          options={[
+            { id: 1, name: "Javascript" },
+            { id: 2, name: "TypeScript" },
+            { id: 3, name: "Python" },
+          ]}
           // onChange={getCategoryOption}
           // value={categoryInput}
-        />
+        /> */}
 
         <S.PostTitle>
           <S.TitTextArea placeholder="제목을 입력하세요" />
@@ -58,7 +56,12 @@ const AdminTemplate = () => {
       </S.PostTitWrapper>
       <S.MarkdownContainer>
         <div data-color-mode="light">
-          <MDEditor height={650} value={value} onChange={setValue} />
+          <MDEditor
+            height={650}
+            value={value}
+            onChange={setValue}
+            fullscreen={false}
+          />
         </div>
 
         {/* 버튼그룹 */}

@@ -22,7 +22,7 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
-  background-color: #121212 !important;
+  /* background-color: #121212 !important; */
   font-family: 'Centra', sans-serif !important;
 }
 
