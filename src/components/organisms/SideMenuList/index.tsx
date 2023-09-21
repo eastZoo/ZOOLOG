@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./sideMenuSection.style";
 
 import SideProfile from "@/components/molcules/SideProfile";
 import SideNavList from "@/components/molcules/SideNavList";
 
-export default function SideMenuSection({
-  toggleMenu,
-  isOpen,
-  openHandler,
-}: any) {
+function SideMenuSection() {
+  const [isOpen, setOpen] = useState(true);
+
+  const openHandler = () => {
+    setOpen((prev) => !prev);
+  };
+
+  const toggleMenu = () => {
+    if (window.innerWidth <= 600) {
+      setOpen(!isOpen);
+    } else {
+      setOpen(!isOpen);
+    }
+  };
+
   return (
     <S.SideMenuSection className={`${isOpen ? "on" : "off"}`}>
       <SideProfile />
@@ -18,3 +28,5 @@ export default function SideMenuSection({
     </S.SideMenuSection>
   );
 }
+
+export default React.memo(SideMenuSection);

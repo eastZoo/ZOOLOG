@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./headerNav.style";
+import Link from "next/link";
 
 const HeaderNav = () => {
   return (
@@ -8,7 +9,9 @@ const HeaderNav = () => {
         <S.HeaderInner>
           <S.HederBox>
             <h4>Header( maybe recent tap here )</h4>
-            <p style={{ marginLeft: "auto" }}>hello</p>
+            <Link href={"/admin"}>
+              <p style={{ marginLeft: "auto" }}>edit</p>
+            </Link>
           </S.HederBox>
         </S.HeaderInner>
       </S.Header>

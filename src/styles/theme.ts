@@ -54,6 +54,7 @@ export const theme: DefaultTheme = {
 
     black: "#000000",
     white: "#ffffff",
+    btnRed: "#ff5544",
     red: "#ff5f5f",
     whiteHover: "#F6F7FA",
   },

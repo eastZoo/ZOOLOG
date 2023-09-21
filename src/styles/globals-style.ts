@@ -36,6 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 
 div {
   font-size: 1.0rem;
+  display: block;
 }
 
 p, a, li, button, ul {

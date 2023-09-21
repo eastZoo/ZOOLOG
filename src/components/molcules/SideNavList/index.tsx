@@ -1,18 +1,19 @@
 "use client";
 import { SideNavItem } from "@/components/atoms/SideNavItem";
 import * as S from "./sideNavList.style";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useQuery } from "@tanstack/react-query";
 import { request } from "@/lib/api";
 import { menuListState, selecteMenuState } from "@/recoil/menu";
 import { groupBy } from "@/lib/common.fn";
 import { Menu } from "@/types/menu";
+import Link from "next/link";
 // import D02Icon from "@/styles/assets/svg/File.svg";
 // import D01Icon from "@/styles/assets/svg/Group-folders.svg";
 // import MovePageIcon from "@/styles/assets/svg/Angle-right.svg";
 
-export default function SideNavList({ openHandler }: any) {
+function SideNavList({ openHandler }: any) {
   const [menuList, setMenuList] = useRecoilState(menuListState);
   const [menuParent, setMenuParent] = useState<number>();
   const [menuGroup, setMenuGroup] = useState(groupBy(menuList, "depth"));
@@ -50,73 +51,76 @@ export default function SideNavList({ openHandler }: any) {
       })
     );
   }
-  console.log(menuList);
 
   // 토글 메뉴 렌더링 함수 부분
-  function renderMenu(
-    list: Menu[],
-    level: number = 0,
-    parrent_id: number | null
-  ) {
-    const mList = list.filter((menu: Menu) => menu.parrent_id === parrent_id);
+  const renderMenu = useCallback(
+    (list: Menu[], level: number = 0, parrent_id: number | null) => {
+      const mList =
+        list?.filter((menu: Menu) => menu.parrent_id === parrent_id) || [];
 
-    const resultComponent = [];
-    for (const menu of mList) {
-      if (menuGroup[level + 1] && menu.menu_type === 0) {
-        // 0 or 1
-        resultComponent.push(
-          <div key={menu.id}>
-            <div
-              className={`m-dept01 ${
-                menuParent === menu.id ? "page-now" : ""
-              } ${menu.is_open ? "open" : ""}`}
-              onClick={() => toggleMenu(menu.id, menu.is_open)}
-            >
-              <span>
-                {[...Array(level)].map((num: any) => {
-                  return <>&nbsp;&nbsp;&nbsp;</>;
-                })}
-                {/* <D01Icon className="d01-icon" /> */}
-                <span>{menu.name}</span>
-              </span>
-              {/* <MovePageIcon className="move-page-icon" /> */}
+      const resultComponent = [];
+      for (const menu of mList) {
+        if (menuGroup[level + 1] && menu.menu_type === 0) {
+          // 0 or 1
+          resultComponent.push(
+            <div key={menu.id}>
+              <div
+                className={`m-dept01 ${
+                  menuParent === menu.id ? "page-now" : ""
+                } ${menu.is_open ? "open" : ""}`}
+                onClick={() => toggleMenu(menu.id, menu.is_open)}
+              >
+                <span>
+                  {[...Array(level)].map((num: any) => {
+                    return <>&nbsp;&nbsp;&nbsp;</>;
+                  })}
+                  {/* <D01Icon className="d01-icon" /> */}
+                  <span>{menu.name}</span>
+                </span>
+                {/* <MovePageIcon className="move-page-icon" /> */}
+              </div>
+              <div className={`m-dept02-list ${menu.is_open ? "open" : ""}`}>
+                {renderMenu(menuGroup[level + 1], level + 1, menu.id)}
+              </div>
             </div>
-            <div className={`m-dept02-list ${menu.is_open ? "open" : ""}`}>
-              {renderMenu(menuGroup[level + 1], level + 1, menu.id)}
-            </div>
-          </div>
-        );
-      } else {
-        resultComponent.push(
-          <div
-            key={menu.id}
-            className={`m-dept02 ${
-              menu.id === selectedMenuId ? "page-now" : ""
-            }`}
-            onClick={(is_open: any) => {
-              if (window.innerWidth <= 600) {
-                // setMenu({ id: menu.id });
-                setMenuParent(menu.parrent_id);
-                openHandler(!is_open);
-              } else {
-                // setMenu({ id: menu.id });
-                setMenuParent(menu.parrent_id);
-              }
-            }}
-          >
-            <span>
-              {[...Array(level)].map((num: any) => {
-                return <>&nbsp;&nbsp;&nbsp;</>;
-              })}
-              {/* <D02Icon className="d02-icon" /> */}
-              <span>- {menu.name}</span>
-            </span>
-          </div>
-        );
+          );
+        } else {
+          resultComponent.push(
+            <Link href={"/post"}>
+              <div
+                key={menu.id}
+                className={`m-dept02 ${
+                  menu.id === selectedMenuId ? "page-now" : ""
+                }`}
+                onClick={(is_open: any) => {
+                  if (window.innerWidth <= 600) {
+                    // setMenu({ id: menu.id });
+                    setMenuParent(menu.parrent_id);
+                    openHandler(!is_open);
+                  } else {
+                    // setMenu({ id: menu.id });
+                    setMenuParent(menu.parrent_id);
+                  }
+                }}
+              >
+                <span>
+                  {[...Array(level)].map((num: any) => {
+                    return <>&nbsp;&nbsp;&nbsp;</>;
+                  })}
+                  {/* <D02Icon className="d02-icon" /> */}
+                  <span>- {menu.name}</span>
+                </span>
+              </div>
+            </Link>
+          );
+        }
       }
-    }
-    return resultComponent;
-  }
+      return resultComponent;
+    },
+    [menuGroup]
+  );
 
   return <S.SideNavList>{renderMenu(menuGroup[0], 0, 0)}</S.SideNavList>;
 }
+
+export default React.memo(SideNavList);

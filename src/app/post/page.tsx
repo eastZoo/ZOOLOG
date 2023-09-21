@@ -1,14 +1,13 @@
-"use client";
-import AdminTemplate from "@/components/templates/AdminTemplate";
+import PostTemplate from "@/components/templates/PostTemplate";
 import SideMenuLayout from "@/components/templates/SideMenuLayout";
 import React from "react";
 
-const admin = () => {
+const Post = () => {
   return (
     <SideMenuLayout>
-      <AdminTemplate />
+      <PostTemplate />
     </SideMenuLayout>
   );
 };
 
-export default admin;
+export default Post;

@@ -6,6 +6,7 @@ import { BannerSection } from "../../organisms/BannerSection";
 import { SkillSection } from "@/components/organisms/SkillSection";
 import { ProjectSection } from "@/components/organisms/ProjectSection";
 import { ContactSection } from "@/components/organisms/ContactSection";
+import { Footer } from "@/components/organisms/Footer";
 
 const MainTemplate = () => {
   return (
@@ -14,6 +15,7 @@ const MainTemplate = () => {
       <SkillSection />
       <ProjectSection />
       <ContactSection />
+      <Footer />
     </S.MainTemplate>
   );
 };
