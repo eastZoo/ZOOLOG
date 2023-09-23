@@ -35,12 +35,12 @@ export const InputSelect: React.FC<SelectProps> = ({
     >
       <label>
         {label && label}
-        <select {...register} onChange={onChange} value={value || name}>
+        <select {...register} onChange={onChange} value={value}>
           {placeholder && <option>{placeholder}</option>}
           {options?.map((option: any, idx: number) => {
             return (
-              <option key={idx} value={option.id}>
-                {option.name}
+              <option key={idx} value={option?.id}>
+                {option?.name}
               </option>
             );
           })}

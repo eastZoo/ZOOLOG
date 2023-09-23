@@ -58,6 +58,7 @@ const AdminTemplate = () => {
         method: "GET",
         url: `menu/post/category`,
       }).then((res) => {
+        console.log(res);
         return res;
       })
   );
