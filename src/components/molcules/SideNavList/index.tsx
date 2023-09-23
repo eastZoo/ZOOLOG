@@ -23,7 +23,7 @@ function SideNavList({ openHandler }: any) {
   const { data: MenuListData } = useQuery(["menu-list"], () =>
     request({
       method: "GET",
-      url: `menu/menu-list`,
+      url: `menu/sidebar`,
     }).then((res) => {
       return res;
     })

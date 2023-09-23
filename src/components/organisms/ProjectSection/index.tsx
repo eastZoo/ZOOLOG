@@ -1,45 +1,31 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import projImg1 from "@/styles/assets/images/project-img1.png";
+
 import projImg2 from "@/styles/assets/images/project-img2.png";
 import projImg3 from "@/styles/assets/images/project-img3.png";
 import colorSharp2 from "@/styles/assets/images/color-sharp2.png";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 import { ProjectCard } from "@/components/molcules/ProjectCard";
+import { useQuery } from "@tanstack/react-query";
+import { request } from "@/lib/api";
+interface postDataType {
+  id: number;
+  category_id: string;
+  title: string;
+  post: string;
+}
+[];
 
 export const ProjectSection = () => {
-  const projects = [
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
-  ];
+  const { data: postData } = useQuery(["post-list"], () =>
+    request<postDataType | any>({
+      method: "GET",
+      url: `post/all`,
+    }).then((res) => {
+      console.log(res);
+      return res;
+    })
+  );
 
   return (
     <section className="project" id="projects">
@@ -85,7 +71,7 @@ export const ProjectSection = () => {
                     >
                       <Tab.Pane eventKey="first">
                         <Row>
-                          {projects.map((project, index) => {
+                          {postData?.map((project: any, index: number) => {
                             return <ProjectCard key={index} {...project} />;
                           })}
                         </Row>

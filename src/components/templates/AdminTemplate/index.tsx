@@ -3,70 +3,115 @@ import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { request } from "@/lib/api";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import * as S from "./adminTemplate.style";
 import { Button } from "@/components/atoms/Button";
 import { InputSelect } from "@/components/atoms/Input/InputSelect";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
 const AdminTemplate = () => {
-  const [inputCount, setInputCount] = useState<any>(0);
-  const [inputElements, setInputElements] = useState<any>([]);
+  const [post, setPost] = useState<any>("**Hello world!!!**");
+  const [category, setCategory] = useState<any>();
+  const [title, setTitle] = useState<any>();
+  const schema = yup.object({
+    categoryId: yup.string().nullable().required("카테고리를 선택해주세요"),
+    title: yup.string().nullable().required("제목을 입력해주세요"),
+  });
 
-  const [value, setValue] = useState<any>("**Hello world!!!**");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
-  const addCategoryHandler = () => {
-    setInputCount(inputCount + 1);
-    setInputElements([...inputElements, inputCount]);
+  // 카테고리 변경 핸들러
+  const getCategoryOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategory(e.target.value);
+  };
+  // 카테고리 변경 핸들러
+  const getTitleHandler = (e: any) => {
+    setTitle(e.target.value);
   };
 
-  const { data: category, refetch: categoryRefetch } = useQuery(
+  /** 글등록 함수 */
+  const { mutateAsync: postSubmit } = useMutation(
+    (data: any) =>
+      request<any>({
+        method: "POST",
+        url: `post/create`,
+        data: data,
+      }),
+    {
+      onSuccess: () => {},
+    }
+  );
+
+  const { data: categoryList, refetch: categoryRefetch } = useQuery(
     ["get-category-all"],
     () =>
       request<any>({
         method: "GET",
-        url: `category`,
+        url: `menu/post/category`,
       }).then((res) => {
-        console.log(res);
         return res;
       })
   );
 
+  const onSubmit = (data: any) => {
+    console.log(data);
+    const dataSource = {
+      ...data,
+      categoryId: Number(data.categoryId),
+      post: post,
+    };
+
+    console.log(dataSource);
+    postSubmit(dataSource);
+  };
+
+  console.log(category);
+  console.log(title);
   return (
-    <S.AdminTemplate>
+    <S.AdminTemplate onSubmit={handleSubmit(onSubmit)}>
       <S.PostTitWrapper>
-        {/* <InputSelect
+        <InputSelect
           layout="columns"
           size="sm"
           width="150px"
           themeType="admin"
-          options={[
-            { id: 1, name: "Javascript" },
-            { id: 2, name: "TypeScript" },
-            { id: 3, name: "Python" },
-          ]}
-          // onChange={getCategoryOption}
-          // value={categoryInput}
-        /> */}
+          options={categoryList}
+          register={register("categoryId")}
+          onChange={getCategoryOption}
+          value={category}
+        />
 
         <S.PostTitle>
-          <S.TitTextArea placeholder="제목을 입력하세요" />
+          <S.TitTextArea
+            placeholder="제목을 입력하세요"
+            value={title}
+            {...register("title")}
+            onChange={getTitleHandler}
+          />
         </S.PostTitle>
       </S.PostTitWrapper>
       <S.MarkdownContainer>
         <div data-color-mode="light">
           <MDEditor
             height={650}
-            value={value}
-            onChange={setValue}
+            value={post}
+            onChange={setPost}
             fullscreen={false}
           />
         </div>
 
         {/* 버튼그룹 */}
         <S.ButtonWrapper>
-          <Button color="primary" label="완료" type="submit" />
+          <Button color="submit" label="완료" type="submit" />
           <Button color="primary" label="임시저장" type="submit" />
         </S.ButtonWrapper>
       </S.MarkdownContainer>

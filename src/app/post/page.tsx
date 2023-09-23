@@ -5,7 +5,8 @@ import React from "react";
 const Post = () => {
   return (
     <SideMenuLayout>
-      <PostTemplate />
+      <div>hello</div>
+      {/* <PostTemplate /> */}
     </SideMenuLayout>
   );
 };

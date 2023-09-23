@@ -2,12 +2,15 @@ import React from "react";
 import * as S from "./sideProfile.style";
 import Image from "next/image";
 import Profile from "@/styles/assets/images/profile.png";
+import Link from "next/link";
 
 const SideProfile = () => {
   return (
     <S.SideProfile>
       <S.SideProfileImg>
-        <Image alt="profile" src={Profile} />
+        <Link href={"/"}>
+          <Image alt="profile" src={Profile} />
+        </Link>
       </S.SideProfileImg>
       <S.ProfileNameTit>
         <div>#nickname</div>
