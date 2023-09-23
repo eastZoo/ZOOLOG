@@ -5,7 +5,7 @@ import { postDataType } from "@/app/post/[id]/page";
 interface PostTemplateProps {
   postData?: postDataType;
 }
-const PostTemplate = ({ postData }: PostTemplateProps) => {
+const PostDetailTemplate = ({ postData }: PostTemplateProps) => {
   return (
     <div>
       <div>
@@ -25,4 +25,4 @@ const PostTemplate = ({ postData }: PostTemplateProps) => {
   );
 };
 
-export default PostTemplate;
+export default PostDetailTemplate;

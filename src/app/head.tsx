@@ -17,6 +17,7 @@ export default function Head() {
         // @ts-ignore
         precedence="default"
       />
+      <link href="/dist/output.css" rel="stylesheet"></link>
       <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
         rel="stylesheet"

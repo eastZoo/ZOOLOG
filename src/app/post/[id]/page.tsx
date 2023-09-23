@@ -1,5 +1,5 @@
 "use client";
-import PostTemplate from "@/components/templates/PostTemplate";
+import PostDetailTemplate from "@/components/templates/PostDetailTemplate";
 import SideMenuLayout from "@/components/templates/SideMenuLayout";
 import { request } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
@@ -40,7 +40,7 @@ export default function PostDetail({ params }: { params: { id: string } }) {
       {isLoading ? (
         <PropagateLoader color="#3697d7" />
       ) : (
-        <PostTemplate postData={dataSource} />
+        <PostDetailTemplate postData={dataSource} />
       )}
     </SideMenuLayout>
   );

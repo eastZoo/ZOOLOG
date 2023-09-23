@@ -6,6 +6,7 @@ import FooterBg from "@/styles/assets/images/footer-bg.png";
 export const GlobalStyle = createGlobalStyle`
 ${normalize}
 
+
 /************ Default Css ************/
 * {
   margin: 0;
