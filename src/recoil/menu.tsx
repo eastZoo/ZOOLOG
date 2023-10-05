@@ -12,9 +12,20 @@ export const openTabsState = atom<Tab[]>({
   default: [],
 });
 
-export const selecteMenuState = atom<number>({
-  key: `selectedMenu/${v1()}`,
+export const selecteCategoryState = atom<number>({
+  key: `selectedCategory/${v1()}`,
   default: 0,
+});
+
+export const selectCategorySelector = selector({
+  key: `selectedCategorySelectoy/${v1()}`,
+  get: ({ get }) => {
+    return get(selecteCategoryState);
+  },
+  set: ({ set }, categoryId: any) => {
+    console.log("set", categoryId);
+    set(selecteCategoryState, categoryId);
+  },
 });
 
 // export const selectedMenuSelector = selector({

@@ -5,7 +5,11 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useQuery } from "@tanstack/react-query";
 import { request } from "@/lib/api";
-import { menuListState, selecteMenuState } from "@/recoil/menu";
+import {
+  menuListState,
+  selectCategorySelector,
+  selecteCategoryState,
+} from "@/recoil/menu";
 import { groupBy } from "@/lib/common.fn";
 import { Menu } from "@/types/menu";
 import Link from "next/link";
@@ -14,11 +18,15 @@ import Link from "next/link";
 // import MovePageIcon from "@/styles/assets/svg/Angle-right.svg";
 
 function SideNavList({ openHandler }: any) {
+  // 사이드바 메뉴 리스트 저장소
   const [menuList, setMenuList] = useRecoilState(menuListState);
   const [menuParent, setMenuParent] = useState<number>();
   const [menuGroup, setMenuGroup] = useState(groupBy(menuList, "depth"));
-  const selectedMenuId = useRecoilValue(selecteMenuState);
-  // const setMenu = useSetRecoilState(selectedMenuSelector);
+
+  // 현재 클릭한 사이드바 카테고리의 id
+  const categoryId = useRecoilValue(selecteCategoryState);
+  // 현재 클릭한 사이드바 카테고리의 id 저장 함수
+  const setCategoryId = useSetRecoilState(selectCategorySelector);
 
   const { data: MenuListData } = useQuery(["menu-list"], () =>
     request({
@@ -57,7 +65,6 @@ function SideNavList({ openHandler }: any) {
     (list: Menu[], level: number = 0, parrent_id: number | null) => {
       const mList =
         list?.filter((menu: Menu) => menu.parrent_id === parrent_id) || [];
-
       const resultComponent = [];
       for (const menu of mList) {
         if (menuGroup[level + 1] && menu.menu_type === 0) {
@@ -90,17 +97,13 @@ function SideNavList({ openHandler }: any) {
               <div
                 key={menu.id}
                 className={`m-dept02 ${
-                  menu.id === selectedMenuId ? "page-now" : ""
+                  menu.id === categoryId ? "page-now" : ""
                 }`}
                 onClick={(is_open: any) => {
-                  if (window.innerWidth <= 600) {
-                    // setMenu({ id: menu.id });
-                    setMenuParent(menu.parrent_id);
-                    openHandler(!is_open);
-                  } else {
-                    // setMenu({ id: menu.id });
-                    setMenuParent(menu.parrent_id);
-                  }
+                  // 사이드바에서 선택한 카테고리 id 전역변수(recoil)로 저장, useQuery params post 변경
+                  setCategoryId(menu.id);
+
+                  setMenuParent(menu.parrent_id);
                 }}
               >
                 <span>
@@ -117,10 +120,10 @@ function SideNavList({ openHandler }: any) {
       }
       return resultComponent;
     },
-    [menuGroup]
+    [menuGroup, categoryId]
   );
 
   return <S.SideNavList>{renderMenu(menuGroup[0], 0, 0)}</S.SideNavList>;
 }
 
-export default React.memo(SideNavList);
+export default SideNavList;

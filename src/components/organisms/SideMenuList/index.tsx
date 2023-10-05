@@ -29,4 +29,4 @@ function SideMenuSection() {
   );
 }
 
-export default React.memo(SideMenuSection);
+export default SideMenuSection;
