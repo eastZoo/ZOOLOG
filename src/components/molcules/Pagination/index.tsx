@@ -15,7 +15,7 @@ const Pagination = ({
   return (
     <div className="btn-group">
       <button
-        disabled={currentPage === 1 || isPreviousData}
+        disabled={currentPage === 1 || isPreviousData || totalItems === 0}
         className="btn"
         onClick={handlePrevClick}
       >
@@ -23,7 +23,9 @@ const Pagination = ({
       </button>
       <button className="btn">Page {currentPage}</button>
       <button
-        disabled={currentPage === pageCount || isPreviousData}
+        disabled={
+          currentPage === pageCount || isPreviousData || totalItems === 0
+        }
         className="btn"
         onClick={handleNextClick}
       >

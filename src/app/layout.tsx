@@ -10,6 +10,7 @@ import { theme } from "@/styles/theme";
 import StyledComponentsRegistry from "@/lib/registry";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { GlobalStyle } from "@/styles/globals-style";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,7 @@ export default function RootLayout({
         retry: 1,
         refetchOnMount: true,
         refetchOnWindowFocus: true,
-        staleTime: 1000 * 10,
+        staleTime: 1000 * 1000,
         cacheTime: Infinity,
       },
     },
@@ -49,6 +50,7 @@ export default function RootLayout({
             </StyledComponentsRegistry>
           </ThemeProvider>
         </RecoilRoot>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </html>
   );
