@@ -3,9 +3,8 @@ import Pagination from "@/components/molcules/Pagination";
 import PostList from "@/components/organisms/PostList";
 import { ClipLoader } from "react-spinners";
 import React, { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getPostList } from "@/api/api";
-
+import EmptyList from "@/components/atoms/EmptyList";
+import * as S from "./postListTemplate.style";
 interface PostListTemplateProps {
   data: any;
   isLoading: any;
@@ -26,34 +25,30 @@ const PostListTemplate = ({
   setCurrentPage,
   currentPage,
 }: PostListTemplateProps) => {
-  // const [currentPage, setCurrentPage] = useState(1);
-
-  // const { data, isLoading, isError, error, isFetching, isPreviousData }: any =
-  //   useQuery({
-  //     queryKey: ["posts", currentPage],
-  //     queryFn: () => getPostList(currentPage),
-  //     keepPreviousData: true,
-  //   });
-
   if (isLoading) return "Loading...";
   if (isError) return `Error: ${error.message}`;
 
+  console.log(data);
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-center text-2xl my-5 underline font-bold">
-        Pagination
-      </h1>
-      <PostList postList={data.postList} />
-      <div className="flex items-center justify-between my-5">
-        <Pagination
-          currentPage={currentPage}
-          totalItems={data.totalData}
-          onPageChange={(page: any) => setCurrentPage(page)}
-          isPreviousData={isPreviousData}
-        />
-        {isFetching ? <ClipLoader color="#36d7b7" /> : null}
-      </div>
-    </div>
+    <S.PostListTemplate>
+      <S.CategoryTit>Pagination</S.CategoryTit>
+      {!data.postList.length ? (
+        <EmptyList />
+      ) : (
+        <>
+          <PostList postList={data.postList} />
+          <S.PaginationContainer>
+            <Pagination
+              currentPage={currentPage}
+              totalItems={data.totalData}
+              onPageChange={(page: any) => setCurrentPage(page)}
+              isPreviousData={isPreviousData}
+            />
+            {isFetching ? <ClipLoader color="#36d7b7" /> : null}
+          </S.PaginationContainer>
+        </>
+      )}
+    </S.PostListTemplate>
   );
 };
 
