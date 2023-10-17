@@ -7,12 +7,16 @@ import Profile from "@/styles/assets/images/profile.png";
 import * as S from "./postItem.style";
 
 const PostItem = ({ post: { category_id, id, name, post, title } }: any) => {
-  console.log(category_id, id, name, title);
   return (
     <S.PostItemWrapper>
-      <S.PostItemCoverImg src={PostCover.src} alt="cover" />
+      <Link href={`/post/${id}/${category_id}`}>
+        <S.PostItemCoverImg src={PostCover.src} alt="cover" />
+      </Link>
+
       <Chip label={name} />
-      <h3>{title}</h3>
+      <Link href={`/post/${id}/${category_id}`}>
+        <h3>{title}</h3>
+      </Link>
       <S.PostItemDescription>
         {post.substring(0, 25) + "..."}
       </S.PostItemDescription>

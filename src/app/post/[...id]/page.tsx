@@ -17,12 +17,14 @@ export default function PostDetail({ params }: { params: { id: string } }) {
   const [dataSource, setDataSource] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log(params.id);
   /** 게시글 디테일 Get */
   const { refetch: postDataRefetch } = useQuery(["post-findOne"], () =>
     request<postDataType | any>({
       method: "GET",
-      url: `post/${params.id}`,
+      url: `post/detail/${params.id[0]}?_category=${params.id[1]}`,
     }).then((res) => {
+      console.log(res);
       setDataSource(res);
       setIsLoading(false);
       return res;

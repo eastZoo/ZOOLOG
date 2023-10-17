@@ -1,6 +1,6 @@
 import React from "react";
 import MarkdownPreview from "@uiw/react-markdown-preview";
-import { postDataType } from "@/app/post/[id]/page";
+import { postDataType } from "@/app/post/[...id]/page";
 
 interface PostTemplateProps {
   postData?: postDataType;
